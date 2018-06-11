@@ -25,6 +25,23 @@ namespace DS101
 
             return b;
         }
+        public static List<int> RatioCacculate(int[] values, int wt)
+        {
+            int rationSum = values.Sum();
+            List<int> output = new List<int>();
+
+            foreach (var value in values)
+            {
+                int count = (value * wt) / rationSum;
+
+                if (wt % value != 0)
+                    count = count + 1;
+
+                output.Add(count);
+            }
+
+            return output;
+        }
         public static int[] SparseArray(string[] strings, string[] Queries)
         {
             int[] result = new int[strings.Length];
