@@ -8,6 +8,7 @@ namespace DS101
     public class LinkedListDS
     {
         static LLNode head = null;
+        static LLNode head2 = null;
 
         public static LLNode InsertAtBeg(int input)
         {
@@ -38,6 +39,23 @@ namespace DS101
             temp.next = newNode;
 
             return head;
+        }
+        public static LLNode InsertAtLastHead2(int input)
+        {
+            LLNode newNode = new LLNode(input);
+
+            if (head2 == null)
+                return head2 = newNode;
+
+            LLNode temp = head2;
+            while (temp.next != null)
+            {
+                temp = temp.next;
+            }
+
+            temp.next = newNode;
+
+            return head2;
         }
 
         public static LLNode DeleteAtBeg()
@@ -339,6 +357,53 @@ namespace DS101
                 }
             }
             return counter;
+        }
+
+        public static LLNode MergeList(LLNode head1, LLNode head2)
+        {
+            LLNode mergeList = null;
+
+            if (head1 == null)
+                return head2;
+
+            if (head2 == null)
+                return head1;
+
+            if (head1.data <= head2.data)
+            {
+                mergeList = head1;
+                mergeList.next = MergeList(head1.next, head2);
+            }
+            else
+            {
+                mergeList = head2;
+                mergeList.next = MergeList(head1, head2.next);
+            }
+
+            return mergeList;
+        }
+
+        public static LLNode GetNode(LLNode node, int position)
+        {
+            if (node == null || position == 0)
+                return node;
+
+            Stack<LLNode> stack = new Stack<LLNode>();
+            int counter = 0;
+            LLNode result = null;
+
+            while (node != null)
+            {
+                stack.Push(node);
+                node = node.next;
+            }
+
+            while (counter < position)
+            {
+                result = stack.Pop();
+            }
+
+            return result;
         }
 
     }
