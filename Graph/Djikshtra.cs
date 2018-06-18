@@ -10,6 +10,7 @@ namespace DS101
         public static int[] DjikshtraAlgo(string source, GraphDS graph)
         {
             //Need to use priority queue
+            // Will update with correct solution soon
             Queue<GraphNode> q = new Queue<GraphNode>();
             q.Enqueue(graph.vertices[graph.GetIndexOfVertex(source)]);
             int[] distance = new int[graph.vertices.Length];
